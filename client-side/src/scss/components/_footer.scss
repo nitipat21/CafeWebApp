@@ -1,0 +1,46 @@
+.footer{
+    box-shadow: 0 -1px 3px rgb(0 0 0 / 10%), 0 -2px 2px rgb(0 0 0 / 6%), 0 0 2px rgb(0 0 0 / 7%);
+    z-index: 999;
+
+    .footer-wrapper{
+
+
+        .aboutUs-container{
+            padding: 1rem;
+
+            .aboutUs-icons{
+                display: flex;
+                gap: 2rem;
+                margin-top: 2rem;
+
+                .icon{
+                    background-color: #000;
+                    color: #fff;
+                    padding: 0.75rem;
+                    border-radius: 100%;
+
+                    svg{
+                        width: 1.5rem;
+                        height: 1.5rem;
+                    }
+                }
+            }
+        }
+
+        .contacts-container{
+            padding: 1rem;
+
+            .address, .phone, .email{
+                display: flex;
+                align-items: center;
+                gap: 2rem;
+            }
+        }
+
+        .copyright-container{
+            .copyright{
+                padding: 1rem;
+            }
+        }
+    }
+}
