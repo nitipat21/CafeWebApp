@@ -1,9 +1,10 @@
 .footer{
     box-shadow: 0 -1px 3px rgb(0 0 0 / 10%), 0 -2px 2px rgb(0 0 0 / 6%), 0 0 2px rgb(0 0 0 / 7%);
     z-index: 999;
+    height: 100%;
 
     .footer-wrapper{
-
+        height: 100%;
 
         .aboutUs-container{
             padding: 1rem;
@@ -40,6 +41,10 @@
         .copyright-container{
             .copyright{
                 padding: 1rem;
+
+                p{
+                    margin: 0;
+                }
             }
         }
     }
