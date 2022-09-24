@@ -1,0 +1,39 @@
+.info{
+    background-color: #000;
+    color: #fff;
+
+    .info-wrapper{
+        display: grid;
+        grid-template-rows: 1fr 1fr 1fr;
+        max-width: 1024px;
+        margin: 0 auto;
+
+        @media screen and (min-width: 768px) {
+            grid-template-rows: none;
+            grid-template-columns: 1fr 1fr 1fr;
+            padding-inline: 2rem;
+        }
+
+        .info-container{
+            display: flex;
+            align-items: center;
+            width: 100%;
+
+            @media screen and (min-width: 768px) {
+                align-items: flex-start;
+
+                .icon{
+                    margin-top: 1.25rem;
+                }
+            }
+
+            .icon{
+                padding: 1rem;
+            }
+
+            .info{
+                padding: 1rem;
+            }
+        }
+    }
+}

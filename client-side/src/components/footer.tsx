@@ -1,4 +1,4 @@
-import { faFacebook, faFacebookF, faFacebookSquare, faInstagram, faTwitter } from "@fortawesome/free-brands-svg-icons";
+import { faFacebookF, faInstagram, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope, faLocationDot, faPhone } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FC } from "react";
@@ -9,7 +9,7 @@ const Footer:FC = () => {
             <div className="footer-wrapper">
                 <div className="aboutUs-container">
                     <div className="aboutUs-header">
-                        <h3>About Us</h3>
+                        <h3>ABOUT US</h3>
                     </div>
                     <div className="aboutUs-content">
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam ad itaque aliquam. Natus est optio ipsum. Laborum nostrum ipsam voluptatum?</p>

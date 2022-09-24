@@ -1,0 +1,52 @@
+.story{
+    background-color: #101010;
+    color: $white-color;
+    max-width: 1920px;
+    margin: 0 auto;
+
+    .story-wrapper{
+        .image-container{
+            img{
+                display: block;
+                width: 100%;
+                max-width: 100%;
+                max-height: 320px;
+                object-fit: cover;
+                filter: sepia(25%);
+            }
+        }
+
+        .story-container{
+            padding: 2rem;
+            font-size: clamp(1rem, 2vw, 1.25rem);
+        }
+
+        @media screen and (min-width: 768px) {
+            &{
+                display: flex;
+                position: relative;
+
+                .image-container{
+                    width: 100%;
+
+                    img{
+                        width: 65%;
+                        height: 100%;
+                        max-height: 900px;
+                        aspect-ratio: 1/1;
+                    }
+                }
+
+                .story-container{
+                    position: absolute;
+                    top: 50%;
+                    left: 65%;
+                    transform: translate(-50%, -50%);
+                    background: rgba(0, 0, 0, 0.5);
+                    padding: 2rem;
+                    max-width: 480px;
+                }
+            }
+        }
+    }
+}
