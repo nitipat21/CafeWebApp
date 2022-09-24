@@ -1,5 +1,6 @@
 import { FC } from "react";
 import Bestseller from "../components/bestseller";
+import Gallery from "../components/gallery";
 import Hero from "../components/hero";
 import Info from "../components/info";
 import Services from "../components/services";
@@ -15,6 +16,7 @@ const HomePage:FC = () => {
                 <Story/>
                 <Services/>
                 <Bestseller/>
+                <Gallery/>
             </div>
         </div>
     );

@@ -1,0 +1,20 @@
+.gallery{
+    .gallery-wrapper{
+        display: grid;
+        grid-template-rows: repeat(4, 1fr);
+
+        @media screen and (min-width: 768px) {
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: unset;
+        }
+        
+        .item{
+            img{
+                width: 100%;
+                max-height: 480px;
+                aspect-ratio: 1/1;
+                object-fit: cover;
+            }
+        }
+    }
+}
