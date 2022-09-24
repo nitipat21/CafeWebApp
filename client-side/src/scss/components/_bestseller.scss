@@ -35,6 +35,19 @@
                 .info, .button{
                     text-align: center;
                 }
+
+                .button{
+                    .button{
+                        button{
+                            &:hover, &:focus{
+                                border-color: $orange-color !important;
+                                color: $black-color !important;
+                                box-shadow: inset 0 -2.5rem 0 0 $orange-color;
+                                transition: all 0.5s;
+                            }
+                        }
+                    }
+                }
             }
         }
     }

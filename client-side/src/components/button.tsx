@@ -8,7 +8,7 @@ interface buttonProps {
     onClick: () => void;
 }
 
-const Button:FC<buttonProps> = ({children, border, backgroundColor, color, onClick}) => {
+const Button:FC<buttonProps> = ({children, border, backgroundColor, color, onClick}) => {   
 
     return (
         <div className="button">

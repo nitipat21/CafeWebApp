@@ -7,8 +7,18 @@
     .footer-wrapper{
         height: 100%;
 
+        @media screen and (min-width: 768px) {
+            display: grid;
+            grid-template-areas: 'aboutUs contacts'
+                                'copyright copyright';
+            grid-template-columns: repeat(2, minmax(360px, 480px));
+            justify-content: center;
+            gap: 2rem;
+        }
+
         .aboutUs-container{
             padding: 1rem;
+            grid-area: aboutUs;
 
             .aboutUs-icons{
                 display: flex;
@@ -31,6 +41,7 @@
 
         .contacts-container{
             padding: 1rem;
+            grid-area: contacts;
 
             .address, .phone, .email{
                 display: flex;
@@ -40,6 +51,8 @@
         }
 
         .copyright-container{
+            grid-area: copyright;
+
             .copyright{
                 padding: 1rem;
 
