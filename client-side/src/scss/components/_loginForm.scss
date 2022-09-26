@@ -1,0 +1,71 @@
+.loginForm{
+    .loginForm-wrapper{
+
+        form{
+            max-width: 500px;
+            margin: 0 auto;
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .input{
+            position: relative;
+            cursor: text;
+        }
+
+        #username, #email{
+            width: calc(100% - 2rem - 4px);
+            padding: 1rem;
+            border-radius: 10px;
+            border: 2px solid $black-color;
+        }
+
+        .placeholder{
+            position: absolute;
+            width: fit-content;
+            background-color: $white-color;
+            top: 50%;
+            left: 0%;
+            transform: translate(1rem, -50%);
+            user-select: none;
+        }
+        
+        .icon{
+            position: absolute;
+            top: 50%;
+            right: calc(0% + 1rem);
+            transform: translate(0%,-50%);
+
+            svg{
+                width: 1.5rem;
+                height: 1.5rem;
+            }
+        }
+
+        .warning{
+            display: flex;
+            padding-inline: 1rem;
+            gap: 0.5rem;
+            margin-top: 0.25rem;
+            
+            p{
+                margin: 0;
+            }
+        }
+
+        .keepMe{
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+
+            #keepMe{
+                width: 1.5rem;
+                height: 1.5rem;
+            }
+        }
+
+        .forgetPassword{
+            text-decoration: underline;
+        }
+    }
+}
