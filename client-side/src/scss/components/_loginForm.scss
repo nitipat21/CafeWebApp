@@ -28,6 +28,13 @@
             left: 0%;
             transform: translate(1rem, -50%);
             user-select: none;
+            transition: all 0.3s;
+
+            &.focus{
+                top: 0%;
+                transition: all 0.3s;
+                font-size: smaller;
+            }
         }
         
         .icon{

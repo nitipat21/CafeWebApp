@@ -5,7 +5,9 @@ import Button from "./button";
 
 const LoginForm:FC = () => {
 
-    
+    const usernameRef = useRef<HTMLInputElement | null>(null);
+
+    const emailRef = useRef<HTMLInputElement | null>(null);
 
     const [showPassword, setShowPassword] = useState<Boolean>(false);
 
@@ -13,17 +15,30 @@ const LoginForm:FC = () => {
 
     const [focus, setFocus] = useState<String>("");
 
-    console.log(focus)
+    const onClickUsername = () => {
+        usernameRef.current?.focus();
+    }
+
+    const onClickEmail = () => {
+        emailRef.current?.focus();
+    }
 
     return (
         <div className="loginForm">
             <div className="loginForm-wrapper">
                 <form>
                     <p><span>*</span> indicates required field</p>
-                    <div className="username">
+                    <div className="username" onClick={onClickUsername}>
                         <div className="input">
                             <div className={`placeholder ${focus === "username" ? "focus" : ""}`}>* Username or email address</div>
-                            <input type="text" name="username" id="username" onFocus={(event)=>{setFocus(event.target.id)}}/>
+                            <input
+                                type="text" 
+                                name="username" 
+                                ref={usernameRef} 
+                                id="username" 
+                                onFocus={(event)=>{setFocus(event.target.id)}}
+                                onBlur={()=>{setFocus("")}}
+                            />
                             <div className="icon">
                                 {isWarning && <FontAwesomeIcon icon={faCircleXmark}/>}
                             </div>
@@ -35,10 +50,17 @@ const LoginForm:FC = () => {
                             </div>
                         }
                     </div>
-                    <div className="email">
+                    <div className="email" onClick={onClickEmail}>
                         <div className="input">
                             <div className={`placeholder ${focus === "email" ? "focus" : ""}`}>* Password</div>
-                            <input type="password" name="email" id="email" onFocus={(event)=>{setFocus(event.target.id)}}/>
+                            <input 
+                                type="password" 
+                                name="email" 
+                                ref={emailRef} 
+                                id="email" 
+                                onFocus={(event)=>{setFocus(event.target.id)}}
+                                onBlur={()=>{setFocus("")}}
+                            />
                             <div className="icon">
                                 { showPassword ? 
                                     <FontAwesomeIcon icon={faEye}/>
