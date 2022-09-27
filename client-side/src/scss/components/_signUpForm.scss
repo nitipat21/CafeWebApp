@@ -1,0 +1,121 @@
+.signUpForm{
+    .signUpForm-wrapper{
+
+        form{
+            max-width: 500px;
+            margin: 2rem auto 4rem auto;
+            display: grid;
+            gap: 1.5rem;
+            
+            @media screen and (min-width: 768px) {
+                padding: 1.6rem 3.2rem 2.4rem 3.2rem;
+                border-radius: 10px;
+                box-shadow: $form-boxshadow;
+            }
+
+            h3{
+                margin-bottom: 0rem;
+            }
+
+            .input{
+                position: relative;
+                cursor: text;
+            }
+
+            #username, #password, #firstName, #lastName{
+                width: calc(100% - 2rem - 4px);
+                padding: 1rem;
+                border-radius: 10px;
+                border: 2px solid #d3d3d3;
+                outline: none;
+
+                &:focus{
+                    transition: all 0.3s;
+                    border: 2px solid $orange-color;
+                }
+
+                &.warning-input{
+                    border: 2px solid $warning-color;
+                }
+            }
+
+            .placeholder{
+                position: absolute;
+                width: fit-content;
+                background-color: $white-color;
+                top: 50%;
+                left: 0%;
+                transform: translate(1rem, -50%);
+                user-select: none;
+                transition: all 0.3s;
+                padding-inline: 0.25rem;
+
+                &.focus{
+                    top: 0%;
+                    transition: all 0.3s;
+                    font-size: smaller;
+                    color: $orange-color;
+                }
+
+                &.black-text{
+                    color: $black-color;
+                }
+
+                &.warning-text{
+                    color: $warning-color;
+                }
+            }
+            
+            .icon{
+                position: absolute;
+                top: 50%;
+                right: calc(0% + 1rem);
+                transform: translate(0%,-50%);
+                display: flex;
+                gap: 0.5rem;
+
+                svg{
+                    width: 1.5rem;
+                    height: 1.5rem;
+                }
+            }
+
+            .warning{
+                display: flex;
+                padding-inline: 1rem;
+                gap: 0.5rem;
+                margin-top: 0.25rem;
+                
+                p{
+                    margin: 0;
+                    font-size: 85%
+                }
+            }
+
+            .checkbox{
+                display: flex;
+                gap: 1rem;
+
+                #subscription, #terms{
+                    width: 1.5rem;
+                    height: 1.5rem;
+                    flex-shrink: 0;
+                }
+
+                label{
+                    font-size: 90%;
+                }
+            }
+
+            .forgetPassword{
+                text-decoration: underline;
+            }
+
+            .section-header{
+                p{
+                    font-size: 90%;
+                }
+            }
+        }
+    }
+}

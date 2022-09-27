@@ -7,13 +7,11 @@ const LoginForm:FC = () => {
 
     const usernameRef = useRef<HTMLInputElement | null>(null);
 
-    const emailRef = useRef<HTMLInputElement | null>(null);
+    const passwordRef = useRef<HTMLInputElement | null>(null);
 
     const [username, setUsername] = useState("");
 
-    const [email, setEmail] = useState("");
-
-    const [isSubmit, setIsSubmit] = useState(false);
+    const [password, setPassword] = useState("");
 
     const [showPassword, setShowPassword] = useState<Boolean>(false);
 
@@ -25,15 +23,14 @@ const LoginForm:FC = () => {
         usernameRef.current?.focus();
     }
 
-    const onClickEmail = () => {
-        emailRef.current?.focus();
+    const onClickPassword = () => {
+        passwordRef.current?.focus();
     }
 
     const onSubmit = (event:React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
-        setIsSubmit(true);
 
-        if (!username || !email) {
+        if (!username || !password) {
             setIsWarning(true);
         } else {
             // login
@@ -45,7 +42,7 @@ const LoginForm:FC = () => {
         <div className="loginForm">
             <div className="loginForm-wrapper">
                 <form>
-                    <p><span>*</span> indicates required field</p>
+                    <p style={{marginBottom: '0'}}><span>*</span> indicates required field</p>
                     <div className="username" onClick={onClickUsername}>
                         <div className="input">
                             <div className={
@@ -77,36 +74,36 @@ const LoginForm:FC = () => {
                             </div>
                         }
                     </div>
-                    <div className="email" onClick={onClickEmail}>
+                    <div className="password" onClick={onClickPassword}>
                         <div className="input">
                             <div className={
                                 `placeholder
-                                ${(focus === "email" || email) && "focus"} 
-                                ${focus !== "email" && "black-text"}
-                                ${(isWarning && !email) && "warning-text"}
+                                ${(focus === "password" || password) && "focus"} 
+                                ${focus !== "password" && "black-text"}
+                                ${(isWarning && !password) && "warning-text"}
                                 `
                             }>* Password</div>
                             <input 
-                                type="password" 
-                                name="email" 
-                                ref={emailRef} 
-                                id="email" 
+                                type={`${showPassword ? "text" : "password"}`} 
+                                name="password" 
+                                ref={passwordRef} 
+                                id="password" 
                                 onFocus={(event)=>{setFocus(event.target.id)}}
                                 onBlur={()=>{setFocus("")}}
-                                value={email}
-                                onChange={(event)=>{setEmail(event.target.value)}}
-                                className={`${(isWarning && !email) && "warning-input"}`}
+                                value={password}
+                                onChange={(event)=>{setPassword(event.target.value)}}
+                                className={`${(isWarning && !password) && "warning-input"}`}
                             />
                             <div className="icon">
                                 { showPassword ? 
-                                    <FontAwesomeIcon icon={faEye} style={{opacity: '0.3'}}/>
+                                    <FontAwesomeIcon icon={faEye} style={{opacity: '0.3'}} onClick={()=>{setShowPassword(false)}}/>
                                     :
-                                    <FontAwesomeIcon icon={faEyeSlash} style={{opacity: '0.3'}}/>
+                                    <FontAwesomeIcon icon={faEyeSlash} style={{opacity: '0.3'}} onClick={()=>{setShowPassword(true)}}/>
                                 }    
-                                {(isWarning && !email) && <FontAwesomeIcon icon={faCircleXmark} style={{color: '#d62b1f'}}/>}
+                                {(isWarning && !password) && <FontAwesomeIcon icon={faCircleXmark} style={{color: '#d62b1f'}}/>}
                             </div>
                         </div>
-                        { (isWarning && !email) && 
+                        { (isWarning && !password) && 
                             <div className="warning">
                                 <FontAwesomeIcon icon={faXmark} style={{color: '#d62b1f'}}/>
                                 <p>Enter a password.</p>
