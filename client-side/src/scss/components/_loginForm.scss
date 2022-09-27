@@ -18,6 +18,16 @@
             padding: 1rem;
             border-radius: 10px;
             border: 2px solid $black-color;
+            outline: none;
+
+            &:focus{
+                transition: all 0.3s;
+                border: 2px solid $orange-color;
+            }
+
+            &.warning-input{
+                border: 2px solid $warning-color;
+            }
         }
 
         .placeholder{
@@ -34,6 +44,15 @@
                 top: 0%;
                 transition: all 0.3s;
                 font-size: smaller;
+                color: $orange-color;
+            }
+
+            &.black-text{
+                color: $black-color;
+            }
+
+            &.warning-text{
+                color: $warning-color;
             }
         }
         
@@ -42,6 +61,8 @@
             top: 50%;
             right: calc(0% + 1rem);
             transform: translate(0%,-50%);
+            display: flex;
+            gap: 0.5rem;
 
             svg{
                 width: 1.5rem;

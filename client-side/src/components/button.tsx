@@ -4,8 +4,8 @@ interface buttonProps {
     children: React.ReactNode;
     border?: string;
     backgroundColor?: string;
-    color?:string
-    onClick: () => void;
+    color?:string;
+    onClick: ((event:React.MouseEvent<HTMLButtonElement>) => void) | (() => void);
 }
 
 const Button:FC<buttonProps> = ({children, border, backgroundColor, color, onClick}) => {   
