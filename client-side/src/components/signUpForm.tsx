@@ -1,6 +1,6 @@
 import { faCheck, faCircleXmark, faEye, faEyeSlash, faUpRightFromSquare, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { FC, useRef, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import Button from "./button";
 
 const SignUpForm:FC = () => {
@@ -27,7 +27,7 @@ const SignUpForm:FC = () => {
 
     const [isStrongPassword, setIsStrongPassword] = useState<boolean>(false);
 
-    const [isAgree, setIsAgree] = useState<boolean>(false);
+    const [isAgree, setIsAgree] = useState(false);
 
     const [focus, setFocus] = useState<string>("");
 
@@ -52,22 +52,39 @@ const SignUpForm:FC = () => {
     const onSubmit = (event:React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
 
-        if (!firstName || !lastName || !username || !password) {
+        // check input
+        if (!firstName || !lastName || !username || !isStrongPassword || !isAgree) {
             setIsWarning(true);
-            // if (!firstName) {
-            //     firstNameRef.current?.focus();
-            // } else if (!lastName) {
-            //     lastNameRef.current?.focus();
-            // } else if (!username) {
-            //     usernameRef.current?.focus();
-            // } else {
-            //     passwordRef.current?.focus();
-            // }
+            if (!firstName) {
+                firstNameRef.current?.focus();
+            } else if (!lastName) {
+                lastNameRef.current?.focus();
+            } else if (!username) {
+                usernameRef.current?.focus();
+            } else if (!isStrongPassword) {
+                passwordRef.current?.focus();
+            }
         } else {
             // signUp
         }
-        
     }
+
+    useEffect(()=>{
+        if (isWarning) {
+            const citeria1 = password.length > 8;
+            const citeria2 = /\d/.test(password);
+            const citeria3 = /[A-Z]/.test(password);
+            const citeria4 = /[a-z]/.test(password);
+            const citeria5 = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(password);
+
+            if (citeria1 && citeria2 && citeria3 && citeria4 && citeria5) {
+                setIsStrongPassword(true);
+            } else {
+                setIsStrongPassword(false);
+            }
+        }
+
+    },[password, isWarning]);
 
     return (
         <div className="signUpForm">
@@ -200,7 +217,7 @@ const SignUpForm:FC = () => {
                                     :
                                     <FontAwesomeIcon icon={faEyeSlash} style={{opacity: '0.3'}} onClick={()=>{setShowPassword(true)}}/>
                                 }    
-                                {isWarning && <FontAwesomeIcon icon={faCircleXmark} style={{color: '#d62b1f'}}/>}
+                                {(isWarning && !isStrongPassword) && <FontAwesomeIcon icon={faCircleXmark} style={{color: '#d62b1f'}}/>}
                             </div>
                         </div>
                         { isWarning && 
@@ -265,27 +282,34 @@ const SignUpForm:FC = () => {
                     <div className="section-header">
                         <h3>Terms of Use</h3>
                     </div>
-                    <div className="checkbox terms">
-                        <input type="checkbox" name="terms" id="terms"/>
-                        <label htmlFor="terms">
-                            <span>
-                            I agree to the 
+                    <div className="terms">
+                        <div className="checkbox">
+                            <input type="checkbox" name="terms" id="terms" onChange={()=>{setIsAgree(prev => !prev)}} checked={isAgree}/>
+                            <label htmlFor="terms">
                                 <span>
-                                    <a href=""> CoffeeShop Rewards Terms <FontAwesomeIcon icon={faUpRightFromSquare}/> </a>
-                                    
+                                I agree to the 
+                                    <span>
+                                        <a href=""> CoffeeShop Rewards Terms <FontAwesomeIcon icon={faUpRightFromSquare}/> </a>
+                                        
+                                    </span>
+                                and the 
+                                    <span>
+                                        <a href=""> CoffeeShop Membership Terms <FontAwesomeIcon icon={faUpRightFromSquare}/> </a>
+                                        
+                                    </span>
+                                and have read the
+                                    <span>
+                                        <a href=""> CoffeeShop Privacy Statement <FontAwesomeIcon icon={faUpRightFromSquare}/> </a>
+                                    </span>
                                 </span>
-                            and the 
-                                <span>
-                                    <a href=""> CoffeeShop Membership Terms <FontAwesomeIcon icon={faUpRightFromSquare}/> </a>
-                                    
-                                </span>
-                            and have read the
-                                <span>
-                                    <a href=""> CoffeeShop Privacy Statement <FontAwesomeIcon icon={faUpRightFromSquare}/></a>
-                            .
-                                </span>
-                            </span>
-                        </label>
+                            </label>
+                        </div>        
+                        { (isWarning && !isAgree) && 
+                            <div className="warning" style={{marginTop:'1rem'}}>
+                                <FontAwesomeIcon icon={faXmark} style={{color: '#d62b1f'}}/>
+                                <p>Please agree to the Terms of Use</p>
+                            </div>
+                        }
                     </div>
                     <div className="forgetPassword">
                         <a>Forgot your password?</a>
