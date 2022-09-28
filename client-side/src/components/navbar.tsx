@@ -43,14 +43,14 @@ const Navbar:FC = () => {
                     <div className="logo" onClick={redirectToHome} style={{cursor:"pointer"}}>
                         <h3>Coffee<br></br>Shop</h3>
                     </div>
-                    {   width > 768 &&
+                    {   width?.width! > 768 &&
                         <ul className="link-list">
                             <li><a href="">Menu/Order</a></li>
                             <li><a href="">Membership</a></li>
                         </ul>
                     }
                 </div>
-                {   width < 768 ?
+                {   width?.width! < 768 ?
                     <div className="hamburger" onClick={()=> dispatch(toggleSidebar())}>
                         {   isShowSidebar ?
                             <FontAwesomeIcon icon={faXmark} size={"2x"}/>

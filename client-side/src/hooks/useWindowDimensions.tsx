@@ -1,10 +1,9 @@
 // credit https://stackoverflow.com/a/36862446
 
 import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
 
 function getWindowDimensions() {
-  const { innerWidth: width, innerHeight: height } = window;
+  const { visualViewport: width, innerHeight: height } = window;
   return {
     width,
     height
@@ -13,8 +12,6 @@ function getWindowDimensions() {
 
 export default function useWindowDimensions() {
   const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
-
-  const location = useLocation();
 
   useEffect(() => {
     function handleResize() {

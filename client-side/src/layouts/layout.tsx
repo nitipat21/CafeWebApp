@@ -33,7 +33,7 @@ const Layout:FC<layoutProps> = ({children}) => {
             <div className="layout-wrapper">
                 <Navbar/>
                 <AnimatePresence>
-                    {isShowSidebar && width < 768 ? <SideBar/> : null}
+                    {isShowSidebar && width?.width! < 768 ? <SideBar/> : null}
                 </AnimatePresence>
                 {children}
                 <Footer/>
