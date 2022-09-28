@@ -34,6 +34,8 @@ const Navbar:FC = () => {
         }
     }
 
+    console.log(width)
+
     return (
         <div className="navbar">
             <div className="navbar-wrapper">

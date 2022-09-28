@@ -1,6 +1,7 @@
 import { faCircleXmark, faEye, faEyeSlash, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FC, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import Button from "./button";
 
 const LoginForm:FC = () => {
@@ -125,6 +126,9 @@ const LoginForm:FC = () => {
                         />
                     </div>
                 </form>
+                <div style={{textAlign: "center"}}>
+                    <p>Not a member? <span><Link to={('/signUp')}>Sign up now</Link></span></p>
+                </div>
             </div>
         </div>
     );

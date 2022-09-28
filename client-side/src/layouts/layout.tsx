@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from "../app/store";
 import useWindowDimensions from "../hooks/useWindowDimensions";
 import Footer from "../components/footer";
+import { AnimatePresence } from "framer-motion";
 
 interface layoutProps {
     children: React.ReactNode;
@@ -25,11 +26,15 @@ const Layout:FC<layoutProps> = ({children}) => {
         }
     },[isShowSidebar]);
 
+    console.log("layout",width)
+
     return (
         <div className="layout">
             <div className="layout-wrapper">
                 <Navbar/>
-                {isShowSidebar && width < 768 ? <SideBar/> : null}
+                <AnimatePresence>
+                    {isShowSidebar && width < 768 ? <SideBar/> : null}
+                </AnimatePresence>
                 {children}
                 <Footer/>
             </div>

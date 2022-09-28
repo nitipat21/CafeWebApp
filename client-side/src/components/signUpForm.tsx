@@ -73,7 +73,7 @@ const SignUpForm:FC = () => {
             const citeria2 = /\d/.test(password);
             const citeria3 = /[A-Z]/.test(password);
             const citeria4 = /[a-z]/.test(password);
-            const citeria5 = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(password);
+            const citeria5 = /[`!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~]/.test(password);
 
             if (citeria1 && citeria2 && citeria3 && citeria4 && citeria5) {
                 setIsStrongPassword(true);
@@ -252,7 +252,7 @@ const SignUpForm:FC = () => {
                                     <p>At least one lowercase letter</p>
                                 </div>
                                 <div className="warning">
-                                    {/[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(password) ?
+                                    {/[`!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~]/.test(password) ?
                                         <FontAwesomeIcon icon={faCheck} style={{color: '#006241'}}/>
                                         :
                                         <FontAwesomeIcon icon={faXmark} style={{color: '#d62b1f'}}/>

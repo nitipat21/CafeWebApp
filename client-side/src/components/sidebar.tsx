@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { FC } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -5,6 +6,15 @@ import { toggleSidebar } from "../app/frontEndSlice";
 import Button from "./button";
 
 const SideBar:FC = () => {
+
+    const animationConfiguration = {
+        initial: { opacity: 0, x: window.innerWidth },
+        animate: { opacity: 1, x:0 },
+        exit: { opacity: 0, x: window.innerWidth },
+        overlay_initial: { opacity: 0 },
+        overlay_animate: { opacity: 0.38 },
+        overlay_exit: { opacity: 0 }
+    };
 
     const navigate = useNavigate();
 
@@ -21,9 +31,25 @@ const SideBar:FC = () => {
     }
 
     return (
-        <div className="sidebar">
-            <div className="sidebar-overlay">
-                <div className="overlay"></div>
+        <motion.div 
+        className="sidebar"
+        variants={animationConfiguration}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+        transition={{ duration: 0.8 }}
+        key="sidebar"
+        >
+            <div className="sidebar-overlay" onClick={()=>{dispatch(toggleSidebar())}}>
+                <motion.div 
+                className="overlay"
+                variants={animationConfiguration}
+                initial="overlay_initial"
+                animate="overlay_animate"
+                exit="overlay_exit"
+                transition={{ duration: 2.4 }}
+                key="overlay">
+                </motion.div>
             </div>
             <div className="sidebar-wrapper">
                 <ul className="link-list">
@@ -40,7 +66,7 @@ const SideBar:FC = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 }
 

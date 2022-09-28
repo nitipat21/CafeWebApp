@@ -1,20 +1,9 @@
 import { faFacebookF, faInstagram, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope, faLocationDot, faPhone } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useInView } from "framer-motion";
-import { FC, useRef } from "react";
+import { FC } from "react";
 
 const Footer:FC = () => {
-
-    const motionRef = useRef(null);
-
-    const isInView = useInView(motionRef, {margin:"0px 0px -50px 0px", once: true });
-
-    const motionStyle = {
-        transform: isInView ? "none" : "translateY(100px)",
-        opacity: isInView ? 1 : 0,
-        transition: "all 1.25s",
-    }
 
     const redirectToFacebook = () => {
         window.location.href = 'https://www.facebook.com/';
@@ -40,13 +29,13 @@ const Footer:FC = () => {
         <div className="footer">
             <div className="footer-wrapper">
                 <div className="aboutUs-container">
-                    <div className="aboutUs-header" ref={motionRef}>
+                    <div className="aboutUs-header">
                         <h3>ABOUT US</h3>
                     </div>
                     <div className="aboutUs-content">
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam ad itaque aliquam. Natus est optio ipsum. Laborum nostrum ipsam voluptatum?</p>
                     </div>
-                    <div className="aboutUs-icons" style={motionStyle}>
+                    <div className="aboutUs-icons">
                         <div className="icon">
                             <FontAwesomeIcon icon={faFacebookF} onClick={redirectToFacebook}/>
                         </div>
