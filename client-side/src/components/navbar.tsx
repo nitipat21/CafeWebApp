@@ -1,4 +1,4 @@
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FC } from "react";
 import useWindowDimensions from "../hooks/useWindowDimensions";
@@ -30,7 +30,7 @@ const Navbar:FC = () => {
     const redirectToHome = () => {
         navigate('/');
         if (isShowSidebar) {
-            dispatch({type:toggleSidebar});
+            dispatch(toggleSidebar());
         }
     }
 
@@ -50,7 +50,11 @@ const Navbar:FC = () => {
                 </div>
                 {   width < 768 ?
                     <div className="hamburger" onClick={()=> dispatch(toggleSidebar())}>
-                        <FontAwesomeIcon icon={faBars} size={"2x"}/>
+                        {   isShowSidebar ?
+                            <FontAwesomeIcon icon={faXmark} size={"2x"}/>
+                            :
+                            <FontAwesomeIcon icon={faBars} size={"2x"}/>
+                        }
                     </div>
                     :
                     <div className="right-section">

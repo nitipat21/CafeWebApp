@@ -1,8 +1,19 @@
-import { FC, useState } from "react";
+import { useInView } from "framer-motion";
+import { FC, useRef, useState } from "react";
 import bestsellerImage from '../assets/items/bestseller.jpg';
 import Button from "./button";
 
 const Bestseller:FC = () => {
+
+    const motionRef = useRef(null);
+
+    const isInView = useInView(motionRef, {margin:"0px 0px -100px 0px", once: true });
+
+    const motionStyle = {
+        transform: isInView ? "none" : "translateY(200px)",
+        opacity: isInView ? 1 : 0,
+        transition: "all 1.25s",
+    }
 
     const [bestsellerList, setBestSellerList] = useState<null[]>([null, null, null, null]);
 
@@ -24,17 +35,17 @@ const Bestseller:FC = () => {
     });
 
     return (
-        <div className="bestseller">
-            <div className="bestseller-wrapper">
-                <div className="title-container">
+        <div className="bestseller" ref={motionRef}>
+            <div className="bestseller-wrapper" >
+                <div className="title-container" style={motionStyle}>
                     <div className="header">
                         <h2>BEST COFFEE SELLERS</h2>
                     </div>
-                    <div className="content">
+                    <div className="content" style={motionStyle}>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo earum maxime, quae sint aut eum!</p>
                     </div>
                 </div>
-                <div className="bestseller-container">
+                <div className="bestseller-container" style={motionStyle}>
                     {bestsellerElement}
                 </div>
             </div>

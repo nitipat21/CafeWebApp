@@ -1,12 +1,24 @@
 import { faCartPlus, faMugHot, faTruckFast } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { FC } from "react";
+import { useInView } from "framer-motion";
+import { FC, useRef } from "react";
 
 const Services:FC = () => {
+
+    const motionRef = useRef(null);
+
+    const isInView = useInView(motionRef, {margin:"0px 0px -100px 0px", once: true });
+
+    const motionStyle = {
+        transform: isInView ? "none" : "translateY(200px)",
+        opacity: isInView ? 1 : 0,
+        transition: "all 1.25s",
+    }
+
     return (
         <div className="services">
-            <div className="services-wrapper">
-                <div className="service-item">
+            <div className="services-wrapper" ref={motionRef}>
+                <div className="service-item" style={motionStyle}>
                     <div className="icon">
                         <FontAwesomeIcon icon={faCartPlus}/>
                     </div>
@@ -19,7 +31,7 @@ const Services:FC = () => {
                         </div>
                     </div>
                 </div>
-                <div className="service-item">
+                <div className="service-item" style={motionStyle}>
                     <div className="icon">
                         <FontAwesomeIcon icon={faTruckFast}/>
                     </div>
@@ -32,7 +44,7 @@ const Services:FC = () => {
                         </div>
                     </div>
                 </div>
-                <div className="service-item">
+                <div className="service-item" style={motionStyle}>
                     <div className="icon">
                         <FontAwesomeIcon icon={faMugHot}/>
                     </div>

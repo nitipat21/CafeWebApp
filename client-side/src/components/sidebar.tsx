@@ -12,12 +12,12 @@ const SideBar:FC = () => {
 
     const signIn = () => {
         navigate('/login');
-        dispatch({type:toggleSidebar});
+        dispatch(toggleSidebar());
     }
 
     const signUp = () => {
         navigate('/signUp');
-        dispatch({type:toggleSidebar});
+        dispatch(toggleSidebar());
     }
 
     return (
