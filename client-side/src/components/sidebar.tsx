@@ -1,14 +1,23 @@
 import { FC } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { toggleSidebar } from "../app/frontEndSlice";
 import Button from "./button";
 
 const SideBar:FC = () => {
 
-    const signIn = () => {
+    const navigate = useNavigate();
 
+    const dispatch = useDispatch();
+
+    const signIn = () => {
+        navigate('/login');
+        dispatch({type:toggleSidebar});
     }
 
     const signUp = () => {
-
+        navigate('/signUp');
+        dispatch({type:toggleSidebar});
     }
 
     return (

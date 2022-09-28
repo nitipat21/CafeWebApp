@@ -30,6 +30,13 @@
                     color: #fff;
                     padding: 0.75rem;
                     border-radius: 100%;
+                    cursor: pointer;
+
+                    &:hover{
+                        opacity: 0.8;
+                        transition: all 0.3s;
+                        transform: scale(1.05);
+                    }
 
                     svg{
                         width: 1.5rem;
@@ -47,6 +54,12 @@
                 display: flex;
                 align-items: center;
                 gap: 2rem;
+
+                &{
+                    div:hover{
+                        color: $orange-color;
+                    }
+                }
             }
         }
 

@@ -5,26 +5,40 @@ import useWindowDimensions from "../hooks/useWindowDimensions";
 import { useDispatch } from 'react-redux'
 import { toggleSidebar } from "../app/frontEndSlice";
 import Button from "./button";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootState } from "../app/store";
 
 const Navbar:FC = () => {
 
     const { width } = useWindowDimensions();
 
+    const isShowSidebar = useSelector((state:RootState) => state.frontEndSliceReducer.isShowSidebar);
+
     const dispatch = useDispatch();
 
-    const signIn = () => {
+    const navigate = useNavigate();
 
+    const signIn = () => {
+        navigate('/login');
     }
 
     const signUp = () => {
+        navigate('/signUp');
+    }
 
+    const redirectToHome = () => {
+        navigate('/');
+        if (isShowSidebar) {
+            dispatch({type:toggleSidebar});
+        }
     }
 
     return (
         <div className="navbar">
             <div className="navbar-wrapper">
                 <div className="left-section">
-                    <div className="logo">
+                    <div className="logo" onClick={redirectToHome} style={{cursor:"pointer"}}>
                         <h3>Coffee<br></br>Shop</h3>
                     </div>
                     {   width > 768 &&

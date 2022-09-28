@@ -31,8 +31,6 @@ const SignUpForm:FC = () => {
 
     const [focus, setFocus] = useState<string>("");
 
-    const [count, setCount] = useState<number>(0);
-
     const onClickFirstName = () => {
         firstNameRef.current?.focus();
     }
@@ -83,7 +81,6 @@ const SignUpForm:FC = () => {
                 setIsStrongPassword(false);
             }
         }
-
     },[password, isWarning]);
 
     return (
@@ -213,9 +210,9 @@ const SignUpForm:FC = () => {
                             />
                             <div className="icon">
                                 { showPassword ? 
-                                    <FontAwesomeIcon icon={faEye} style={{opacity: '0.3'}} onClick={()=>{setShowPassword(false)}}/>
+                                    <FontAwesomeIcon icon={faEye} style={{opacity: '0.3', cursor:'pointer'}} onClick={()=>{setShowPassword(false)}}/>
                                     :
-                                    <FontAwesomeIcon icon={faEyeSlash} style={{opacity: '0.3'}} onClick={()=>{setShowPassword(true)}}/>
+                                    <FontAwesomeIcon icon={faEyeSlash} style={{opacity: '0.3', cursor:'pointer'}} onClick={()=>{setShowPassword(true)}}/>
                                 }    
                                 {(isWarning && !isStrongPassword) && <FontAwesomeIcon icon={faCircleXmark} style={{color: '#d62b1f'}}/>}
                             </div>
@@ -270,14 +267,16 @@ const SignUpForm:FC = () => {
                         <h3>Email subscription</h3>
                         <p>Email is a great way to know about offers and what's new from CoffeeShop.</p>
                     </div>
-                    <div className="checkbox subscription">
-                        <input type="checkbox" name="subscription" id="subscription"/>
-                        <label htmlFor="subscription">
-                            <span>Yes, I'd like email from CoffeeShop</span>
-                            <br></br>
-                            <br></br>
-                            <span style={{marginTop: '1rem'}}>Know about initiatives, announcements and product offers.</span>
-                        </label>
+                    <div className="subscription">
+                        <div className="checkbox">
+                            <input type="checkbox" name="subscription" id="subscription"/>
+                            <label htmlFor="subscription">
+                                <span>Yes, I'd like email from CoffeeShop</span>
+                                <br></br>
+                                <br></br>
+                                <span style={{marginTop: '1rem', opacity:'0.6'}}>Know about initiatives, announcements and product offers.</span>
+                            </label>
+                        </div>
                     </div>
                     <div className="section-header">
                         <h3>Terms of Use</h3>
@@ -312,7 +311,7 @@ const SignUpForm:FC = () => {
                         }
                     </div>
                     <div className="forgetPassword">
-                        <a>Forgot your password?</a>
+                        <a href="">Forgot your password?</a>
                     </div>
                     <div className="submit">
                         <Button children={"Create account"}

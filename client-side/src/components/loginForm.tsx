@@ -96,9 +96,9 @@ const LoginForm:FC = () => {
                             />
                             <div className="icon">
                                 { showPassword ? 
-                                    <FontAwesomeIcon icon={faEye} style={{opacity: '0.3'}} onClick={()=>{setShowPassword(false)}}/>
+                                    <FontAwesomeIcon icon={faEye} style={{opacity: '0.3', cursor:'pointer'}} onClick={()=>{setShowPassword(false)}}/>
                                     :
-                                    <FontAwesomeIcon icon={faEyeSlash} style={{opacity: '0.3'}} onClick={()=>{setShowPassword(true)}}/>
+                                    <FontAwesomeIcon icon={faEyeSlash} style={{opacity: '0.3', cursor:'pointer'}} onClick={()=>{setShowPassword(true)}}/>
                                 }    
                                 {(isWarning && !password) && <FontAwesomeIcon icon={faCircleXmark} style={{color: '#d62b1f'}}/>}
                             </div>
@@ -115,7 +115,7 @@ const LoginForm:FC = () => {
                         <label htmlFor="keepMe">Keep me signed in</label>
                     </div>
                     <div className="forgetPassword">
-                        <a>Forgot your password?</a>
+                        <a href="">Forgot your password?</a>
                     </div>
                     <div className="submit">
                         <Button children={"Sign in"}
