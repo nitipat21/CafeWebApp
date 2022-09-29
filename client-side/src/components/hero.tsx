@@ -54,7 +54,7 @@ const Hero:FC = () => {
                         <p>"{heroContentList[slide].content}"</p>
                     </div>
                     <div className="hero-button" style={motionStyle}>
-                        <Button children="Order Now" border="1px solid #fff" backgroundColor="#fff" color="#000" onClick={OrderNow}/>
+                        <Button children="Order Now" border="1px solid #fff" backgroundColor="transparent" color="#fff" onClick={OrderNow}/>
                         <Button children="View Menu" border="1px solid #fff" backgroundColor="transparent" color="#fff" onClick={ViewMenu}/>
                     </div>
                 </div>

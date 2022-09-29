@@ -28,9 +28,31 @@
                     a{
                         text-decoration: none;
                         font-weight: 600;
+                        position: relative;
 
                         &:visited{
                             color: unset;
+                        }
+
+                        &:after {
+                            content: '';
+                            position: absolute;
+                            width: 100%;
+                            transform: scaleX(0);
+                            height: 2px;
+                            bottom: -4px;
+                            left: 0;
+                            background-color: $black-color;
+                            transform-origin: bottom right;
+                            transition: transform 0.3s ease-out;
+                        }
+    
+                        &:hover{
+
+                            &::after{
+                                transform: scaleX(1);
+                                transform-origin: bottom left;
+                            }     
                         }
                     }
                 }
@@ -42,6 +64,14 @@
             .authentication{
                 display: flex;
                 gap: 1rem;
+
+                .button{
+                    &:hover{
+                        transform: scale(1.05);
+                        transition: all 0.3s;
+                        opacity: 0.8;
+                    }
+                }
             }
         }
     }
