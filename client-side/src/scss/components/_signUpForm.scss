@@ -116,6 +116,18 @@
                     font-size: 90%;
                 }
             }
+
+            .submit{
+                .button{
+                    button{
+                        &:hover{
+                            transform: scale(1.05);
+                            transition: all 0.3s;
+                            opacity: 0.8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
